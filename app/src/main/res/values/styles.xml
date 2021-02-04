@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LogKeeper" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/tone700</item>
+        <item name="colorPrimaryDark">@color/tone900</item>
+        <item name="colorAccent">@color/tone700</item>
+        <item name="android:statusBarColor">@color/status_bar</item>
+    </style>
+</resources>

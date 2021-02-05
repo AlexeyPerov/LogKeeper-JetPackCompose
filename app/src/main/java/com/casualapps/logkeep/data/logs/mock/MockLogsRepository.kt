@@ -13,16 +13,27 @@ import com.casualapps.logkeep.utils.Result
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MockLogsRepository : LogsRepository {
+    private var _initialized = false
+
+    private suspend fun ensureInitialized() {
+        if (!_initialized) {
+            delay(2000)
+            _initialized = true
+        }
+    }
+
     override suspend fun getProjects(): Result<Set<String>> {
         return withContext(Dispatchers.IO) {
-            delay(800)
+            ensureInitialized()
+            delay(500)
             Result.Success(projectsSource)
         }
     }
 
     override suspend fun getLogById(logId: String): Result<LogEntity> {
         return withContext(Dispatchers.IO) {
-            delay(800)
+            ensureInitialized()
+            delay(500)
             var result: LogEntity? = null;
             for (list in logsSource) {
                 val log = list.value.find { it.id == logId }
@@ -43,7 +54,8 @@ class MockLogsRepository : LogsRepository {
 
     override suspend fun getLogInProjectById(project: String, logId: String): Result<LogEntity> {
         return withContext(Dispatchers.IO) {
-            delay(800)
+            ensureInitialized()
+            delay(500)
             val projectLogs = logsSource[project] ?: error("Unable to find project: $project");
             val log = projectLogs.find { it.id == logId }
             if (log == null) {
@@ -57,7 +69,8 @@ class MockLogsRepository : LogsRepository {
 
     override suspend fun getLogsForProject(project: String): Result<List<LogInfoEntity>> {
         return withContext(Dispatchers.IO) {
-            delay(800)
+            ensureInitialized()
+            delay(500)
             Result.Success(logsSource[project] ?: emptyList())
         }
     }

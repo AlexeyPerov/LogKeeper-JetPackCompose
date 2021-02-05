@@ -102,3 +102,6 @@ lint/tmp/
 local.properties
 /.idea/.name
 **/.idea/**
+
+# Firebase
+google-services.json

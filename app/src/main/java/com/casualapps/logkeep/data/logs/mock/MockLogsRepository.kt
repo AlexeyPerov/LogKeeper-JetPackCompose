@@ -76,10 +76,10 @@ class MockLogsRepository : LogsRepository {
     }
 
     override suspend fun addLog(project: String, logData: LogCreationArguments) {
-        TODO("Not yet implemented")
+        TODO("Not implemented")
     }
 
     override suspend fun removeLog(project: String, logId: String) {
-        TODO("Not yet implemented")
+        TODO("Not implemented")
     }
 }

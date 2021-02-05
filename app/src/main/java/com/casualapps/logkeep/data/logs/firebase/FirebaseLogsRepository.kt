@@ -1,28 +1,15 @@
 package com.casualapps.logkeep.data.logs.firebase
 
-import android.content.Context
 import com.casualapps.logkeep.data.logs.LogsRepository
 import com.casualapps.logkeep.model.LogContentsEntity
 import com.casualapps.logkeep.model.LogCreationArguments
 import com.casualapps.logkeep.model.LogEntity
 import com.casualapps.logkeep.model.LogInfoEntity
 import com.casualapps.logkeep.utils.Result
-import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-class FirebaseLogsRepository(applicationContext: Context) : LogsRepository {
-    private var _initialized = false
-    private val _context: Context = applicationContext
-    private val _tag: String = "LOGS"
-
-    private suspend fun ensureInitialized() {
-        if (!_initialized) {
-            FirebaseApp.initializeApp(_context)
-            _initialized = true
-        }
-    }
-
+class FirebaseLogsRepository() : LogsRepository {
     override suspend fun getProjects(): Result<Set<String>> {
         val db = FirebaseFirestore.getInstance()
         val querySnapshot = db.collection("projects").get().await();

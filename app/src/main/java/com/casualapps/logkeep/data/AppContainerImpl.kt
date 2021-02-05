@@ -10,6 +10,6 @@ interface AppContainer {
 
 class AppContainerImpl(private val applicationContext: Context) : AppContainer {
     override val logsRepository: LogsRepository by lazy {
-        FirebaseLogsRepository(applicationContext)
+        FirebaseLogsRepository()
     }
 }

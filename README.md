@@ -8,7 +8,6 @@ Currently, there are only read functions available comparing to the original [ap
 
 ## Libraries
 - [Jetpack Compose](https://developer.android.com/jetpack/compose)
-- [Kotless](https://github.com/JetBrains/kotless)
 - [Firebase Firestore](https://firebase.google.com/docs/firestore)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 

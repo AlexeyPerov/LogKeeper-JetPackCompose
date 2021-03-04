@@ -9,7 +9,7 @@ import com.casualapps.logkeep.utils.Result
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-class FirebaseLogsRepository() : LogsRepository {
+class FirebaseLogsRepository : LogsRepository {
     override suspend fun getProjects(): Result<Set<String>> {
         val db = FirebaseFirestore.getInstance()
         val querySnapshot = db.collection("projects").get().await();
